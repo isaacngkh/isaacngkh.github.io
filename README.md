@@ -1,4 +1,4 @@
-# Digital Calibration Board
+# Cowlibration: Digital Board
 A digital calibration board used for calibrating camera intrinsics.
 
 <img src="docs/screenshot.png" width="480"/>
