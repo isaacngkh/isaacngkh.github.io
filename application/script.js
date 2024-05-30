@@ -1,4 +1,4 @@
-const PPI = 265;
+const PPI = 264;
 
 const ROWS = 8;
 const COLUMNS = 12;
