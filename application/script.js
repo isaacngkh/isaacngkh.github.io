@@ -1,12 +1,12 @@
-const PPI = 264;
+const PPI = 265;
 
 const ROWS = 8;
 const COLUMNS = 12;
 
-const SCALE = 80;
+const SCALE = 18;
 
-const MARKER_UNIT_WIDTH = 0;
-const MARKER_UNIT_HEIGHT = 0;
+const MARKER_UNIT_WIDTH = 7;
+const MARKER_UNIT_HEIGHT = 7;
 
 const SQUARE_UNIT_WIDTH = MARKER_UNIT_WIDTH + 2;
 const SQUARE_UNIT_HEIGHT = MARKER_UNIT_HEIGHT + 2;
@@ -67,7 +67,7 @@ function draw_board(ctx, marker_dictionary) {
 		for (let col = 0; col < COLUMNS; col++) {
 			let count = col;
 
-			if (row % 2 == 0) {
+			if (row % 2 == 1) {
 				count += 1;
 			}
 
