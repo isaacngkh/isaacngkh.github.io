@@ -1,3 +1,4 @@
+/* User adjustable constants */
 const PPI = 264;
 
 const ROWS = 8;
@@ -5,6 +6,7 @@ const COLUMNS = 12;
 
 const SCALE = 18;
 
+/* Do not change the constants below */
 const MARKER_UNIT_WIDTH = 7;
 const MARKER_UNIT_HEIGHT = 7;
 
@@ -18,18 +20,17 @@ const SQUARE_SIZE_PX = SQUARE_UNIT_WIDTH * SCALE;
 const SQUARE_SIZE_IN = SQUARE_SIZE_PX / PPI;
 
 async function get_maker_dictionary() {
-  const res = await fetch("dict.json");
+  const res = await fetch("aruco_5x5_1000.json");
 	const marker_data = await res.json();
 
 	return marker_data;
 }
 
-function get_marker_bits(marker_dictionary, marker_family, id) {
-	const marker = marker_dictionary[marker_family];
+function get_marker_bits(marker_dictionary, id) {
 	let bits = [];
 
-	for (let byte of marker["data"][id]) {
-		const start = (marker["width"] * marker["height"]) - bits.length;
+	for (let byte of marker_dictionary["data"][id]) {
+		const start = (marker_dictionary["width"] * marker_dictionary["height"]) - bits.length;
 
 		for (let i = Math.min(7, start - 1); i >= 0; i--) {
 			bits.push((byte >> i) & 1);
@@ -75,7 +76,7 @@ function draw_board(ctx, marker_dictionary) {
 				ctx.fillRect(col * SQUARE_SIZE_PX, row * SQUARE_SIZE_PX, SQUARE_SIZE_PX, SQUARE_SIZE_PX);
 			} else {
 				const marker_id = Math.floor(((row * COLUMNS) + col) / 2);
-				const bits = get_marker_bits(marker_dictionary, "aruco_5x5_1000", marker_id);
+				const bits = get_marker_bits(marker_dictionary, marker_id);
 
 				const margin = (SQUARE_SIZE_PX - MARKER_SIZE_PX) / 2;
 
