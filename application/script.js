@@ -4,7 +4,7 @@ const PPI = 264;
 const ROWS = 8;
 const COLUMNS = 12;
 
-const SCALE = 25;
+const SCALE = 18;
 
 /* Do not change the constants below */
 const MARKER_UNIT_WIDTH = 7;
